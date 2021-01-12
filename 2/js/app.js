@@ -21,56 +21,26 @@ async function main(withIp = true) {
         const ip = await fetch('https://api.ipify.org?format=json')
                             .then(resultat => resultat.json())
                             .then(json => json.ip);
-        console.log(meteo);
+        console.log(ip);
 
         // Trouver la ville de l'utilisateur
         ville = await fetch('https://freegeoip.live/json/' + ip)
                             .then(resultat => resultat.json())
                             .then(json => json.city);
+        console.log(ville);
+
     } else {
-        ville = document.querySelector('#ville').textContent;
+        //ville = document.querySelector('#ville').textContent;
     }
 
     // Trouver la météo de l'utilisateur
     const meteo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville},fr&appid=${APIKEY}&units=metric&lang=fr`)
                             .then(resultat => resultat.json())
                             .then(json => json.city);
+    console.log(meteo);
 
-    // Afficher la météo de l'utilisateur
-   // showWeatherInfos(meteo)
 }
 
-// function showWeatherInfos(data) {
-//     const name = data.name;
-//     const temperature = data.main.temp;
-//     const conditions = data.weather[0].main;
-//     const description = data.weather[0].description;
-
-//     document.querySelector('#ville').textContent = name;
-//     document.querySelector('#temperature').textContent = Math.round(temperature);
-//     document.querySelector('#conditions').textContent = capitalize(description);
-//     document.querySelector('i.wi').className = weatherIcons[conditions];
-
-//     document.body.className = condition.toLowerCase();
-// }
-
-// const ville = document.querySelector('#ville');
-
-// ville.addEventListener('click', () => {
-//     ville.contentEditable = true;
-// });
-
-// ville.addEventListener('keydown', (e) => {
-//     if(e.keyCode === 13){
-//         e.preventDefault();
-//         ville.contentEditable = false;
-//         main(false);
-//     }
-// })
-
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=marseille,fr&appid=94c6cf0868fa5cb930a5e2d71baf0dbf&units=metric&lang=fr`).then(resultat =>
+    resultat.json().then(json => console.log(json)));
 main();
-
-const ip = fetch('https://api.ipify.org?format=json')
-.then(resultat => resultat.json())
-.then(json => json.ip);
-console.log(meteo);
