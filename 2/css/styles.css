@@ -1,11 +1,31 @@
+.clear {
+    background-image: url("../img/clear.jpg");
+}
+
+.clouds {
+    background-image: url("../img/cloud.jpg");
+}
+
+.rain {
+    background-image: url("../img/rain.jpg");
+}
+
+.snow {
+    background-image: url("../img/snow.jpg");
+}
+
 body {
     font-family: 'Trebuchet Ms', sans-serif;
     text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-position: center;
+    background-size: cover;
 }
 
 h1 {
@@ -22,5 +42,19 @@ h2 {
 }
 
 .tooltip {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    color: #fff;
+    background-color: #222;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12p;
+    transition: opacity .3s, top .5s;
+}
+
+h1:hover .tooltip {
+    top: -50px;
+    opacity: 1;
 }

@@ -1,30 +1,48 @@
-//     "Clear": "wi wi-day-sunny",
-//     "Snow": "wi wi-day-snow",
-//     "mist": "wi wi-day-fog",
-//     "Drizzle": "wi wi-day-sleet",
-// }
+const weatherIcons = {
+    "Rain": "wi wi-day-rain",
+    "Clouds": "wi wi-day-cloudy",
+    "Clear": "wi wi-day-sunny",
+    "Snow": "wi wi-day-snow",
+    "mist": "wi wi-day-fog",
+    "Drizzle": "wi wi-day-sleet",
+}
 
 function capitalize(str) {
     return str[0].tuUpperCase() + str.slice(1);
 }
 
 const APIKEY = '94c6cf0868fa5cb930a5e2d71baf0dbf';
-console.log("salut")
-function main() {
+
+async function main() {
     // Trouver l'adress Ip de l'utilisateur
-    const ip = fetch('https://api.ipify.org?format=json')
-                .then(resultat => resultat.json())
-                .then(json => json.ip);
+    const ip = await fetch('https://api.ipify.org?format=json')
+                        .then(resultat => resultat.json())
+                        .then(json => json.ip);
+    console.log(meteo);
 
     // Trouver la ville de l'utilisateur
-    const ville = fetch('https://freegeoip.live/json/' + ip)
-                    .then(resultat => resultat.json())
-                    .then(json => json.city);
+    const ville = await fetch('https://freegeoip.live/json/' + ip)
+                            .then(resultat => resultat.json())
+                            .then(json => json.city);
 
     // Trouver la météo de l'utilisateur
-    const meteo = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville},fr&appid=${APIKEY}&units=metric&lang=fr`)
-                .then(resultat => resultat.json())
-                .then(json => json.city);
+    const meteo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville},fr&appid=${APIKEY}&units=metric&lang=fr`)
+                            .then(resultat => resultat.json())
+                            .then(json => json.city);
 
+    // Afficher la météo de l'utilisateur
+    showWeatherInfos(meteo)
 }
 
+function showWeatherInfos(data) {
+    const name = data.name;
+    const temperature = data.main.temp;
+    const conditions = data.weather[0].main;
+    const description = data.weather[0].description;
+
+    document.querySelector('#ville').textContent = name;
+    document.querySelector('#temperature').textContent = Math.round(temperature);
+    document.querySelector('#conditions').textContent = capitalize(description);
+    document.querySelector('i.wi').className = weatherIcons[conditions];
+
+main();
