@@ -1,5 +1,6 @@
 body {
-    background-image: url(../img/photo.jpg);
+    /* background-image: url(../img/photo.jpg); */
+    background-color: #64b2e0;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -21,24 +22,24 @@ body {
     align-items: center;
     font-size: 1.5rem;
     color: white;
+    text-align: center;
 }
 
-#temp, #pressure{
+#image, #pressure, #temp, #sunrise{
     background-color: rgba(41, 128, 185, 0.75);
 }
 
-#sky, #sunrise {
-    background-color: rgba(67, 82, 101, 0.75);
-}
-
-#wind, #sunset {
+#wind, #sunset, #general, #humidity {
     background-color: rgba(52, 152, 219, 0.75);
 }
 
-#city, #humidity {
-    background-color: rgba(143, 146, 154, 0.75);
+#general {
+    text-align: center;
+    font-size: 27px;
+    color: black;
+    font-weight: bold;
 }
 
-#image {
-    background-color: rgba(216, 224, 230, 0.75);
+.fa-sun, .fa-moon {
+    color: yellow;
 }
