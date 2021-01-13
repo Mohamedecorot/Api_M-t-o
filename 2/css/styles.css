@@ -55,6 +55,6 @@ h2 {
 }
 
 h1:hover .tooltip {
-    /* top: -50px; */
+    top: -50px;
     opacity: 1;
 }

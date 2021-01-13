@@ -8,7 +8,7 @@ const weatherIcons = {
 }
 
 function capitalize(str) {
-    return str[0].tuUpperCase() + str.slice(1);
+    return str[0].toUpperCase() + str.slice(1);
 }
 
 const APIKEY = '94c6cf0868fa5cb930a5e2d71baf0dbf';
@@ -30,14 +30,14 @@ async function main(withIp = true) {
                             //console.log(ville);
 
     } else {
-        //ville = document.querySelector('#ville').textContent;
+        ville = document.querySelector('#ville').textContent;
     }
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ville},fr&appid=${APIKEY}&units=metric&lang=fr`;
     // Trouver la météo de l'utilisateur
     const meteo = await fetch(url)
                             .then((resultat) => resultat.json()
-                            .then((json) => meteo));
+                            .then((json) => json));
     console.log(meteo);
 
     //Afficher la météo de l'utilisateur json.name
@@ -49,13 +49,13 @@ function showWeatherInfos(data) {
     const temperature = data.main.temp;
     const conditions = data.weather[0].main;
     const description = data.weather[0].description;
-
+    console.log(name, temperature, conditions, description);
     document.querySelector('#ville').textContent = name;
     document.querySelector('#temperature').textContent = Math.round(temperature);
     document.querySelector('#conditions').textContent = capitalize(description);
     document.querySelector('i.wi').className = weatherIcons[conditions];
 
-    document.body.className = condition.toLowerCase();
+    document.body.className = conditions.toLowerCase();
 }
 
 const ville = document.querySelector('#ville');
