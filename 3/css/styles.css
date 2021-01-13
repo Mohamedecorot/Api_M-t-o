@@ -23,15 +23,15 @@ body {
     color: white;
 }
 
-#temp{
+#temp, #pressure{
     background-color: rgba(41, 128, 185, 0.75);
 }
 
-#sky {
+#sky, #sunrise {
     background-color: rgba(67, 82, 101, 0.75);
 }
 
-#wind {
+#wind, #sunset {
     background-color: rgba(52, 152, 219, 0.75);
 }
 
