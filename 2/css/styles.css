@@ -50,11 +50,11 @@ h2 {
     background-color: #222;
     border-radius: 5px;
     padding: 10px;
-    font-size: 12p;
+    font-size: 12px;
     transition: opacity .3s, top .5s;
 }
 
 h1:hover .tooltip {
-    top: -50px;
+    /* top: -50px; */
     opacity: 1;
 }

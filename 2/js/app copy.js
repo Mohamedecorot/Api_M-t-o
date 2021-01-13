@@ -69,8 +69,3 @@ async function main(withIp = true) {
 // })
 
 main();
-
-const ip = fetch('https://api.ipify.org?format=json')
-.then(resultat => resultat.json())
-.then(json => json.ip);
-console.log(meteo);
