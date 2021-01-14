@@ -45,6 +45,6 @@ body {
     color: yellow;
 }
 
-#pressure, #sunrise, #sunset {
+#pressure, #sunrise, #sunset, #postalDiv, #coordsDiv {
     display: none;
 }

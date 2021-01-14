@@ -1,34 +1,8 @@
 const APIKEY = '94c6cf0868fa5cb930a5e2d71baf0dbf';
 
-var searchCity =
-`
-  <div class="form-group">
-    <label for="inputCity">Entre le nom d'un ville :</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-`;
-
-var searchPostal =
-`
-
-`;
-
-var searchCoords =
-`
-
-`;
-
-
-
-
 // fonction d'appel à l'API OpenWeather
 var apiCall = function(city) {
   var url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
-
-  // On récupère les id des checkbox pour déternminer le lien de recherche
-  var citySearch = document.getElementById("citySearch");
-  var postalSearch = document.getElementById("postalSearch");
-  var coordsSearch = document.getElementById("coordsSearch");
 
   // if (document.querySelector('#citySearch').checked = true) {
   //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
@@ -124,6 +98,36 @@ function showHide (button, div) {
 showHide(btn_pressure, div_pressure);
 showHide(btn_sunrise, div_sunrise);
 showHide(btn_sunset, div_sunset);
+
+
+// On récupère les id contenant des checkbox
+var citySearch = document.getElementById("citySearch");
+var postalSearch = document.getElementById("postalSearch");
+var coordsSearch = document.getElementById("coordsSearch");
+
+// On récupère les div des formualaires de recherche
+var cityDiv = document.getElementById("cityDiv");
+var postalDiv = document.getElementById("postalDiv");
+var coordsDiv = document.getElementById("coordsDiv");
+
+function Change() {
+
+  if (citySearch.checked) {
+    cityDiv.style.display="block";
+    postalDiv.style.display="none";
+    coordsDiv.style.display="none";
+  }
+  if (postalSearch.checked) {
+    postalDiv.style.display="block";
+    cityDiv.style.display="none";
+    coordsDiv.style.display="none";
+  }
+  if (coordsSearch.checked) {
+    coordsDiv.style.display="block";
+    cityDiv.style.display="none";
+    postalDiv.style.display="none";
+  }
+}
 
 //  On appel par défaut au chargement de la page
 apiCall('Marseille');

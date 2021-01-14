@@ -13,37 +13,38 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-6 my-3">
                 <form>
-                    <div class="form-group">
+                    <p>Recherche par : </p>
+                    <label>
+                        <input type="radio" name="search" id="citySearch" value="citySearch" required onclick="Change()" checked>
+                        <span>Ville</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="search" id="postalSearch" value="postalSearch" required onclick="Change()">
+                        <span>Code postal</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="search" id="coordsSearch" value="coordsSearch" required onclick="Change()">
+                        <span>Coordonnées géographiques</span>
+                    </label>
+
+                    <div id="coordsDiv" class="form-group">
                         <label for="long">Entrez la longitude :</label>
                         <input type="text" class="form-control" id="long">
                         <label for="lat">Entrez la latitude :</label>
                         <input type="text" class="form-control" id="lat">
                     </div>
 
-                    <div class="form-group">
+                    <div id="postalDiv" class="form-group">
                         <label for="long">Entrez le code postale :</label>
                         <input type="text" class="form-control" id="long">
                         <label for="lat">Entrez le code pays (fr pour la france) :</label>
-                        <input type="text" class="form-control" id="lat"
+                        <input type="text" class="form-control" id="lat">
                     </div>
 
-                    <div class="form-group">
+                    <div id="cityDiv" class="form-group">
                         <label for="inputCity">Entrez le nom d'un ville :</label>
                         <input type="text" class="form-control" id="inputCity">
                     </div>
-                    <p>Recherche par : </p>
-                    <label>
-                        <input type="radio" name="search" id="citySearch" value="citySearch" required placeholder="Statut" checked>
-                        <span>Ville</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="search" id="postalSearch" value="postalSearch" required placeholder="Statut">
-                        <span>Code postal</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="search" id="coordsSearch" value="coordsSearch" required placeholder="Statut">
-                        <span>Coordonnées géographiques</span>
-                    </label>
 
                     <button type="submit" class="btn btn-info btn-black">Valider</button>
 
