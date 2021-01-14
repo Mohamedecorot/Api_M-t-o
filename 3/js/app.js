@@ -1,18 +1,46 @@
 const APIKEY = '94c6cf0868fa5cb930a5e2d71baf0dbf';
 
-function capitalize(str) {
-  return str[0].toUpperCase() + str.slice(1);
-}
+var searchCity =
+`
+  <div class="form-group">
+    <label for="inputCity">Entre le nom d'un ville :</label>
+    <input type="text" class="form-control" id="inputCity">
+  </div>
+`;
+
+var searchPostal =
+`
+
+`;
+
+var searchCoords =
+`
+
+`;
+
+
+
 
 // fonction d'appel à l'API OpenWeather
-let apiCall = function(city) {
+var apiCall = function(city) {
+  var url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
 
   // On récupère les id des checkbox pour déternminer le lien de recherche
   var citySearch = document.getElementById("citySearch");
   var postalSearch = document.getElementById("postalSearch");
   var coordsSearch = document.getElementById("coordsSearch");
 
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // if (document.querySelector('#citySearch').checked = true) {
+  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // }
+  // if (document.querySelector('#postalSearch').checked = true) {
+  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // }
+  // //api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid=${APIKEY}&units=metric&lang=fr
+  // if (document.querySelector('#coordsSearch').checked = true) {
+  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // }
+  //api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric&lang=fr
 
     fetch(url)
         .then((response) =>
@@ -20,24 +48,24 @@ let apiCall = function(city) {
                 // On récupère les données de l'api et on les affiches
 
                 // Nom de la ville
-                document.querySelector('#city').innerHTML = data.name;
+                document.querySelector('#city').innerHTML = 'Météo de ' + data.name;
                 // Aspect du ciel
                 document.querySelector('#sky').innerHTML = capitalize(data.weather[0].description);
                 // Image du ciel de la ville
                 document.getElementById('img').setAttribute('src',"http://openweathermap.org/img/wn/" + data.weather[0].icon + '@2x.png');
                 // Température de la ville
                 document.querySelector('#temp').innerHTML =
-                  "<i class='fas fa-thermometer-half'></i>" + 'Température : '  + '<br/>' +  + data.main.temp + ' °C';
+                  "<i class='fas fa-thermometer-half'></i>" + 'Température'  + '<br/>' +  + data.main.temp + ' °C';
                 // Vent de la ville
-                document.querySelector('#wind').innerHTML = "<i class='fas fa-wind'></i>" + 'Vent : '  + '<br/>' + data.wind.speed + ' km/h';
+                document.querySelector('#wind').innerHTML = "<i class='fas fa-wind'></i>" + 'Vent'  + '<br/>' + data.wind.speed + ' km/h';
                 // Humidité de la ville
                 document.querySelector('#humidity').innerHTML =
-                  "<i class='fas fa-tint'></i>" + 'Humidité : '  + '<br/>' +  + data.main.humidity + ' %';
+                  "<i class='fas fa-tint'></i>" + 'Humidité'  + '<br/>' +  + data.main.humidity + ' %';
 
                 // Option
                 // Pression de la ville
                 document.querySelector('#pressure').innerHTML =
-                  "<i class='fas fa-thermometer-full'></i>" + 'Pression : '  + '<br/>' + (data.main.pressure)/1000 + ' bar';
+                  "<i class='fas fa-thermometer-full'></i>" + 'Pression'  + '<br/>' + (data.main.pressure)/1000 + ' bar';
                 // Lever de soleil de la ville
                 let sunriseDate = new Date(data.sys.sunrise*1000);
                 let sunriseLocale = sunriseDate.toLocaleString('fr-FR',{
@@ -45,7 +73,7 @@ let apiCall = function(city) {
                     minute: 'numeric',
                     second: 'numeric'});
                 document.querySelector('#sunrise').innerHTML =
-                    "<i class='fas fa-sun'></i>" + "Lever du soleil : "  + '<br/>' + sunriseLocale;
+                    "<i class='fas fa-sun'></i>" + "Lever du soleil"  + '<br/>' + sunriseLocale;
                 // Coucher de soleil de la ville
                 let sunsetDate = new Date(data.sys.sunset*1000);
                 let sunsetLocale = sunsetDate.toLocaleString('fr-FR',{
@@ -53,7 +81,7 @@ let apiCall = function(city) {
                     minute: 'numeric',
                     second: 'numeric'});
                 document.querySelector('#sunset').innerHTML =
-                  "<i class='far fa-moon'></i>" + 'Coucher du soleil : '  + '<br/>' + sunsetLocale;
+                  "<i class='far fa-moon'></i>" + 'Coucher du soleil'  + '<br/>' + sunsetLocale;
         })
     )
     .catch((err) => console.log('Erreur : ' + err));
@@ -75,6 +103,11 @@ var btn_sunset = document.getElementById("coucherSoleil");
 var div_pressure = document.getElementById("pressure");
 var div_sunrise = document.getElementById("sunrise");
 var div_sunset = document.getElementById("sunset");
+
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
 
 // Fonction qui permet de cacher ou d'afficher un des paramètres optionnels
 function showHide (button, div) {
