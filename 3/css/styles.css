@@ -23,6 +23,7 @@ body {
     font-size: 1.5rem;
     color: white;
     text-align: center;
+    border: solid 1px black;
 }
 
 #image, #pressure, #temp, #sunrise{
