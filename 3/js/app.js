@@ -22,7 +22,7 @@ let apiCall = function(city) {
                 // On récupère les données de l'api et on les affiches
 
                 // Nom de la ville
-                document.querySelector('#general').innerHTML = data.name + ' : ' + '<br/>' + capitalize(data.weather[0].description);
+                document.querySelector('#general').innerHTML = data.name + '<br/>' + capitalize(data.weather[0].description);
                 // Température de la ville
                 document.querySelector('#temp').innerHTML =
                   "<i class='fas fa-thermometer-half'></i>" + 'Température : '  + '<br/>' +  + data.main.temp + ' °C';
@@ -92,4 +92,4 @@ showHide(btn_sunrise, div_sunrise);
 showHide(btn_sunset, div_sunset);
 
 //  On appel par défaut au chargement de la page
-apiCall('Marseille');
+//apiCall('Marseille');

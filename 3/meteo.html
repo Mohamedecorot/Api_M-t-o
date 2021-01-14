@@ -14,22 +14,30 @@
             <div class="col-12 col-sm-6 my-3">
                 <form>
                     <div class="form-group">
-                        <label for="pression">Entre le nom d'un ville :</label>
+                        <label for="inputCity">Entre le nom d'un ville :</label>
                         <input type="text" class="form-control" id="inputCity">
                     </div>
-
-                    <button id="pression">Afficher la pression</button>
-                    <button id="leverSoleil">Afficher l'heure du lever du soleil</button>
-                    <button id="coucherSoleil">Afficher l'heure du coucher du soleil</button>
 
                     <button type="submit" class="btn btn-info btn-black">Recherche par ville</button>
                     <button type="submit" class="btn btn-info btn-black">Recherche par code postal</button>
                     <button type="submit" class="btn btn-info btn-black">Recherche par coordonnées géographiques</button>
 
+                    <div>
+                        <input type="checkbox" id="pression" name="pression">
+                        <label for="pression">Pression</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="leverSoleil" name="leverSoleil">
+                        <label for="leverSoleil">Lever du soleil</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="coucherSoleil" name="coucherSoleil">
+                        <label for="coucherSoleil">Coucher du soleil</label>
+                    </div>
                 </form>
             </div>
 
-            <div class="col-12 col-sm-6 d-flex justify-content-center my-3">
+            <div class="col-12 col-sm-6 justify-content-center my-3">
                 <div class="box-container">
                     <div id="general" class="box"></div>
                     <div id="image" class="box"><img id="img" src="" alt=""></div>
