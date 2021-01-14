@@ -65,6 +65,16 @@ document.querySelector('form').addEventListener('submit', function(e) {
     apiCall(ville);
 });
 
+// On récupère les id des boutons pour afficher ou cacher des paramètres optionnels
+var btn_pressure = document.getElementById("pression");
+var btn_sunrise = document.getElementById("leverSoleil");
+var btn_sunset = document.getElementById("coucherSoleil");
+
+// On récupère les div contenant les paramètres optionnels
+var div_pressure = document.getElementById("pressure");
+var div_sunrise = document.getElementById("sunrise");
+var div_sunset = document.getElementById("sunset");
+
 
 
 
