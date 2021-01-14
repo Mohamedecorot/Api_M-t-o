@@ -19,21 +19,25 @@ let apiCall = function(city) {
     fetch(url)
         .then((response) =>
             response.json().then((data) => {
-                console.log(data);
-                //document.querySelector('#city').innerHTML = data.name;
+                // On récupère les données de l'api et on les affiches
+
+                // Nom de la ville
                 document.querySelector('#general').innerHTML = data.name + ' : ' + '<br/>' + capitalize(data.weather[0].description);
+                // Température de la ville
                 document.querySelector('#temp').innerHTML =
                   "<i class='fas fa-thermometer-half'></i>" + 'Température : '  + '<br/>' +  + data.main.temp + ' °C';
-                // document.querySelector('#sky').innerHTML =
-                //   "<i class='fas fa-wind'></i>" + data.weather[0].description;
+                // Vent de la ville
                 document.querySelector('#wind').innerHTML = "<i class='fas fa-wind'></i>" + 'Vent : '  + '<br/>' + data.wind.speed + ' km/h';
+                // Humidité de la ville
                 document.querySelector('#humidity').innerHTML =
                   "<i class='fas fa-tint'></i>" + 'Humidité : '  + '<br/>' +  + data.main.humidity + ' %';
-                document.getElementById('img').setAttribute('src',"http://openweathermap.org/img/wn/" + data.weather[0].icon + '@2x.png');
-                //optionnal
+                // Ciel de la ville
+                  document.getElementById('img').setAttribute('src',"http://openweathermap.org/img/wn/" + data.weather[0].icon + '@2x.png');
+                // Option
+                // Pression de la ville
                 document.querySelector('#pressure').innerHTML =
                   "<i class='fas fa-thermometer-full'></i>" + 'Pression : '  + '<br/>' + (data.main.pressure)/1000 + ' bar';
-
+                // Lever de soleil de la ville
                 let sunriseDate = new Date(data.sys.sunrise*1000);
                 let sunriseLocale = sunriseDate.toLocaleString('fr-FR',{
                     hour: 'numeric',
@@ -41,7 +45,7 @@ let apiCall = function(city) {
                     second: 'numeric'});
                 document.querySelector('#sunrise').innerHTML =
                     "<i class='fas fa-sun'></i>" + "Lever du soleil : "  + '<br/>' + sunriseLocale;
-
+                // Coucher de soleil de la ville
                 let sunsetDate = new Date(data.sys.sunset*1000);
                 let sunsetLocale = sunsetDate.toLocaleString('fr-FR',{
                     hour: 'numeric',
@@ -54,12 +58,15 @@ let apiCall = function(city) {
     .catch((err) => console.log('Erreur : ' + err));
 }
 
-// Ecouteur d'évenement sur la soumission du formulaire
+// On écoute l'évenement sur la soumission du formulaire
 document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
     let ville = document.querySelector('#inputCity').value;
     apiCall(ville);
 });
 
-//  Appel par défaut au chargement de la page
+
+
+
+//  On appel par défaut au chargement de la page
 apiCall('Marseille');
