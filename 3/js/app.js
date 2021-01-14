@@ -75,8 +75,21 @@ var div_pressure = document.getElementById("pressure");
 var div_sunrise = document.getElementById("sunrise");
 var div_sunset = document.getElementById("sunset");
 
+// Fonction qui permet de cacher ou d'afficher un des paramètres optionnels
+function showHide (button, div) {
+  button.addEventListener("click", () => {
+    if(getComputedStyle(div).display != "none"){
+      div.style.display = "none";
+    } else {
+      div.style.display = "flex";
+    }
+  })
+}
 
-
+// Appel à la fonction showHide sur les paramètres optionnels
+showHide(btn_pressure, div_pressure);
+showHide(btn_sunrise, div_sunrise);
+showHide(btn_sunset, div_sunset);
 
 //  On appel par défaut au chargement de la page
 apiCall('Marseille');
