@@ -1,12 +1,4 @@
 const APIKEY = '94c6cf0868fa5cb930a5e2d71baf0dbf';
-const weatherIcons = {
-  "Rain": "wi wi-day-rain",
-  "Clouds": "wi wi-day-cloudy",
-  "Clear": "wi wi-day-sunny",
-  "Snow": "wi wi-day-snow",
-  "mist": "wi wi-day-fog",
-  "Drizzle": "wi wi-day-sleet",
-}
 
 function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
@@ -14,6 +6,12 @@ function capitalize(str) {
 
 // fonction d'appel à l'API OpenWeather
 let apiCall = function(city) {
+
+  // On récupère les id des checkbox pour déternminer le lien de recherche
+  var citySearch = document.getElementById("citySearch");
+  var postalSearch = document.getElementById("postalSearch");
+  var coordsSearch = document.getElementById("coordsSearch");
+
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
 
     fetch(url)
@@ -22,7 +20,11 @@ let apiCall = function(city) {
                 // On récupère les données de l'api et on les affiches
 
                 // Nom de la ville
-                document.querySelector('#general').innerHTML = data.name + '<br/>' + capitalize(data.weather[0].description);
+                document.querySelector('#city').innerHTML = data.name;
+                // Aspect du ciel
+                document.querySelector('#sky').innerHTML = capitalize(data.weather[0].description);
+                // Image du ciel de la ville
+                document.getElementById('img').setAttribute('src',"http://openweathermap.org/img/wn/" + data.weather[0].icon + '@2x.png');
                 // Température de la ville
                 document.querySelector('#temp').innerHTML =
                   "<i class='fas fa-thermometer-half'></i>" + 'Température : '  + '<br/>' +  + data.main.temp + ' °C';
@@ -31,8 +33,7 @@ let apiCall = function(city) {
                 // Humidité de la ville
                 document.querySelector('#humidity').innerHTML =
                   "<i class='fas fa-tint'></i>" + 'Humidité : '  + '<br/>' +  + data.main.humidity + ' %';
-                // Ciel de la ville
-                  document.getElementById('img').setAttribute('src',"http://openweathermap.org/img/wn/" + data.weather[0].icon + '@2x.png');
+
                 // Option
                 // Pression de la ville
                 document.querySelector('#pressure').innerHTML =
@@ -92,4 +93,4 @@ showHide(btn_sunrise, div_sunrise);
 showHide(btn_sunset, div_sunset);
 
 //  On appel par défaut au chargement de la page
-//apiCall('Marseille');
+apiCall('Marseille');
