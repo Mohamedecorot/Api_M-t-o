@@ -49,7 +49,7 @@ body {
     display: none;
 }
 
-h3 {
+h3, .box-container {
     margin-left: auto;
     margin-right: auto;
 }
