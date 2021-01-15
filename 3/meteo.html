@@ -14,16 +14,16 @@
             <div class="col-12 col-sm-6 my-3">
                 <form>
                     <p>Recherche par : </p>
-                    <label>
-                        <input type="radio" name="search" id="citySearch" value="citySearch" required onclick="Change()" checked>
+                    <label class="form-check form-check-inline">
+                        <input type="radio" name="search" id="citySearch" class="form-check-input" value="citySearch" required onclick="Change()" checked>
                         <span>Ville</span>
                     </label>
-                    <label>
-                        <input type="radio" name="search" id="postalSearch" value="postalSearch" required onclick="Change()">
+                    <label class="form-check form-check-inline">
+                        <input type="radio" name="search" id="postalSearch" class="form-check-input" value="postalSearch" required onclick="Change()">
                         <span>Code postal</span>
                     </label>
-                    <label>
-                        <input type="radio" name="search" id="coordsSearch" value="coordsSearch" required onclick="Change()">
+                    <label class="form-check form-check-inline">
+                        <input type="radio" name="search" id="coordsSearch" class="form-check-input" value="coordsSearch" required onclick="Change()">
                         <span>Coordonnées géographiques</span>
                     </label>
 
@@ -48,25 +48,25 @@
 
                     <button type="submit" class="btn btn-info btn-black">Valider</button>
 
-                    <h2 id="city"></h2>
                     <p>Afficher ou cacher : </p>
-                    <div>
-                        <input type="checkbox" id="pression" name="pression">
-                        <label for="pression">La pression</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="pression" name="pression">
+                        <label class="form-check-label" for="pression">La pression</label>
                     </div>
-                    <div>
-                        <input type="checkbox" id="leverSoleil" name="leverSoleil">
-                        <label for="leverSoleil">le lever du soleil</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="leverSoleil" name="leverSoleil">
+                        <label class="form-check-label" for="leverSoleil">le lever du soleil</label>
                     </div>
-                    <div>
-                        <input type="checkbox" id="coucherSoleil" name="coucherSoleil">
-                        <label for="coucherSoleil">le coucher du soleil</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="coucherSoleil" name="coucherSoleil">
+                        <label class="form-check-label" for="coucherSoleil">le coucher du soleil</label>
                     </div>
                 </form>
             </div>
 
             <div class="col-12 col-sm-6 justify-content-center my-3">
                 <div class="box-container">
+                    <h3 id="city"></h3>
                     <div id="sky" class="box"></div>
                     <div id="image" class="box"><img id="img" src="" alt=""></div>
                     <div id="temp" class="box"></div>
