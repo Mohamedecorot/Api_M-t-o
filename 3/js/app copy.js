@@ -2,28 +2,25 @@ const APIKEY = '94c6cf0868fa5cb930a5e2d71baf0dbf';
 
 // fonction d'appel à l'API OpenWeather
 var apiCall = function(city) {
-  var url;
+  var url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
 
-  if (document.querySelector('#citySearch').checked === true) {
-    url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
-  }
-  if (document.querySelector('#postalSearch').checked === true) {
-    var zip_code = document.querySelector('#zip_code').value;
-    var country_code = document.querySelector('#country_code').value;
-    url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip_code},${country_code}&appid=${APIKEY}&units=metric&lang=fr`;
-  }
-  if (document.querySelector('#coordsSearch').checked === true) {
-    var lat = document.querySelector('#lat').value;
-    var lon = document.querySelector('#long').value;
-    url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric&lang=fr`;
-  }
-
+  // if (document.querySelector('#citySearch').checked = true) {
+  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // }
+  // if (document.querySelector('#postalSearch').checked = true) {
+  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // }
+  // //api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid=${APIKEY}&units=metric&lang=fr
+  // if (document.querySelector('#coordsSearch').checked = true) {
+  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${city},fr&appid=${APIKEY}&units=metric&lang=fr`;
+  // }
+  //api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric&lang=fr
 
     fetch(url)
         .then((response) =>
             response.json().then((data) => {
                 // On récupère les données de l'api et on les affiches
-                console.log(data);
+
                 // Nom de la ville
                 document.querySelector('#city').innerHTML = 'Météo de ' + data.name;
                 // Aspect du ciel
